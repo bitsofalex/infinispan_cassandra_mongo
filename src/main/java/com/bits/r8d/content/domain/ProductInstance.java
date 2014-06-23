@@ -4,13 +4,14 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import javax.validation.constraints.NotNull;
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
 /**
  * Created by alexl on 20/06/2014.
  */
-public class ProductInstance {
+public class ProductInstance implements Serializable {
 
     @NotNull
     private final String productId;
@@ -36,10 +37,6 @@ public class ProductInstance {
 
     public String getProductId() {
         return productId;
-    }
-
-    public Price getRetailerNormalPrice() {
-        return this.prices.get(Price.Type.RETAILER_NORMAL_PRICE);
     }
 
     public Map<Price.Type, Price> getPrices() {

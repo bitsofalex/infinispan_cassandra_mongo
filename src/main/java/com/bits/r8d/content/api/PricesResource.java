@@ -4,6 +4,7 @@ import com.bits.r8d.content.domain.Price;
 import com.bits.r8d.content.domain.ProductInstance;
 import org.infinispan.Cache;
 import org.infinispan.manager.DefaultCacheManager;
+import org.infinispan.manager.EmbeddedCacheManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -23,7 +24,7 @@ public class PricesResource {
     private String productId;
 
     @Autowired
-    public PricesResource(DefaultCacheManager cacheManager) {
+    public PricesResource(EmbeddedCacheManager cacheManager) {
         this.productsCache = cacheManager.getCache("products");
     }
 

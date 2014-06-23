@@ -4,12 +4,13 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import javax.validation.constraints.NotNull;
+import java.io.Serializable;
 import java.math.BigDecimal;
 
 /**
  * Created by alexl on 20/06/2014.
  */
-public class Price {
+public class Price implements Serializable {
 
     @NotNull
     private Type type;

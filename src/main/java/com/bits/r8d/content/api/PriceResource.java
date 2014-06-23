@@ -3,6 +3,7 @@ package com.bits.r8d.content.api;
 import com.bits.r8d.content.domain.ProductInstance;
 import org.infinispan.Cache;
 import org.infinispan.manager.DefaultCacheManager;
+import org.infinispan.manager.EmbeddedCacheManager;
 import org.springframework.beans.factory.annotation.Autowired;
 
 /**
@@ -10,13 +11,10 @@ import org.springframework.beans.factory.annotation.Autowired;
  */
 public class PriceResource {
 
-    private DefaultCacheManager cacheManager;
-
     private Cache<String, ProductInstance> productInstanceCache;
 
     @Autowired
-    public PriceResource(DefaultCacheManager cacheManager) {
-        this.cacheManager = cacheManager;
+    public PriceResource(EmbeddedCacheManager cacheManager) {
         this.productInstanceCache = productInstanceCache;
     }
 }

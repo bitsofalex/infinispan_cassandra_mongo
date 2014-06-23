@@ -23,22 +23,6 @@ public class ContentApplication extends Application<ContentConfiguration> {
 
     @Override
     public void run(final ContentConfiguration contentConfiguration, final Environment environment) throws Exception {
-//        Configuration configuration = contentConfiguration.getInfinispanConfigurationBuilder()
-//                .clustering()
-//                .cacheMode(CacheMode.DIST_ASYNC)
-//                .sync()
-//                .build();
-//        DefaultCacheManager cacheManager = new DefaultCacheManager();
-        // registerResources(environment, cacheManager);
     }
-
-//    private void registerResources(final Environment environment, final DefaultCacheManager cacheManager) {
-//        final EntitiesResource entitiesResource = new EntitiesResource(cacheManager.getCache("entities"));
-//        final ProductsResource productsResource = new ProductsResource(cacheManager.getCache("products"));
-//        final ProductDefinitionsResource productDefinitionsResource = new ProductDefinitionsResource();
-//        environment.jersey().register(entitiesResource);
-//        environment.jersey().register(productsResource);
-//        environment.jersey().register(productDefinitionsResource);
-//    }
 
 }

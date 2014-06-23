@@ -19,13 +19,10 @@ public class ProductResource {
     @Autowired
     private PricesResource pricesResource;
 
-    private DefaultCacheManager cacheManager;
-
     private Cache<String, ProductInstance> productsCache;
 
     @Autowired
     public ProductResource(DefaultCacheManager cacheManager) {
-        this.cacheManager = cacheManager;
         this.productsCache = cacheManager.getCache("products");
     }
 

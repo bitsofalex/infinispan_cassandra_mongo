@@ -3,6 +3,7 @@ package com.bits.r8d.content.api;
 import com.bits.r8d.content.domain.ProductInstance;
 import org.infinispan.Cache;
 import org.infinispan.manager.DefaultCacheManager;
+import org.infinispan.manager.EmbeddedCacheManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -16,7 +17,7 @@ import java.util.Collection;
 @Path("/products")
 public class ProductsResource {
 
-    private DefaultCacheManager cacheManager;
+    private EmbeddedCacheManager cacheManager;
 
     private Cache<String, ProductInstance> productsCache;
 
@@ -24,7 +25,7 @@ public class ProductsResource {
     private ProductResource productResource;
 
     @Autowired
-    public ProductsResource(DefaultCacheManager cacheManager) {
+    public ProductsResource(EmbeddedCacheManager cacheManager) {
         this.cacheManager = cacheManager;
         this.productsCache = cacheManager.getCache("products");
     }
