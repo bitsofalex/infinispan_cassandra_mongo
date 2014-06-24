@@ -17,8 +17,6 @@ import java.util.Collection;
 @Path("/products")
 public class ProductsResource {
 
-    private EmbeddedCacheManager cacheManager;
-
     private Cache<String, ProductInstance> productsCache;
 
     @Autowired
@@ -26,14 +24,12 @@ public class ProductsResource {
 
     @Autowired
     public ProductsResource(EmbeddedCacheManager cacheManager) {
-        this.cacheManager = cacheManager;
         this.productsCache = cacheManager.getCache("products");
     }
 
     @GET
     @Produces("application/json")
     public Collection<ProductInstance> getProducts() {
-        cacheManager.getCache();
         return productsCache.values();
     }
 
