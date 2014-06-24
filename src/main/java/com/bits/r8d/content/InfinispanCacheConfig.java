@@ -53,7 +53,7 @@ public class InfinispanCacheConfig {
 //                .pushStateTimeout(20000);
 
         ConfigurationBuilder builder = new ConfigurationBuilder();
-        builder.loaders().addLoader(JdbcStringBasedCacheStoreConfigurationBuilder.class)
+        builder.loaders().preload(true).addLoader(JdbcStringBasedCacheStoreConfigurationBuilder.class)
                 .fetchPersistentState(true)
                 .ignoreModifications(false)
                 .purgeOnStartup(false)
