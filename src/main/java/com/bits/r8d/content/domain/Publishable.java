@@ -3,15 +3,23 @@ package com.bits.r8d.content.domain;
 /**
  * Created by alexl on 20/06/2014.
  */
-public interface Publishable {
+public abstract class Publishable {
 
-    Boolean isStaged();
+    private State state = State.PROD;
 
-    Boolean isLive();
+    protected void setState(final State state) {
+        this.state = state;
+    }
 
-    Boolean isDeprecated();
+    public Boolean isStaged() {
+        return State.STAGE.equals(state);
+    }
 
-    void publishToProduction();
+    public Boolean isLive() {
+        return State.PROD.equals(state);
+    }
 
-    void deprecate();
+    static enum State {
+        STAGE, PROD;
+    }
 }

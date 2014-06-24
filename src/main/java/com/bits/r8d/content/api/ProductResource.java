@@ -4,6 +4,7 @@ import com.bits.r8d.content.domain.ProductInstance;
 import org.infinispan.Cache;
 import org.infinispan.manager.DefaultCacheManager;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.mongodb.core.MongoOperations;
 import org.springframework.stereotype.Component;
 
 import javax.ws.rs.*;
@@ -18,6 +19,9 @@ public class ProductResource {
 
     @Autowired
     private PricesResource pricesResource;
+
+    @Autowired
+    private MongoOperations mongoOperations;
 
     private Cache<String, ProductInstance> productsCache;
 
@@ -38,7 +42,10 @@ public class ProductResource {
     @Produces("application/json")
     public Response postProduct(@PathParam("productId") final String productId,
                                        final ProductInstance productInstance) {
-        productsCache.putIfAbsent(productId, productInstance);
+        mongoOperations.save(productInstance);
+        if (productInstance.isLive()) {
+            productsCache.putIfAbsent(productId, productInstance);
+        }
         return Response.ok(productInstance)
                 .build();
     }
@@ -50,5 +57,9 @@ public class ProductResource {
 
     public void setPricesResource(PricesResource pricesResource) {
         this.pricesResource = pricesResource;
+    }
+
+    public void setMongoOperations(MongoOperations mongoOperations) {
+        this.mongoOperations = mongoOperations;
     }
 }
