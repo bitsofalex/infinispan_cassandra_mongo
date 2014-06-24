@@ -2,6 +2,8 @@ package com.bits.r8d.content.api;
 
 import com.bits.r8d.content.domain.Entity;
 import org.infinispan.Cache;
+import org.infinispan.manager.EmbeddedCacheManager;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import javax.ws.rs.GET;
@@ -20,7 +22,9 @@ public class EntitiesResource {
 
     private Cache<String, Entity> entitiesCache;
 
-    public EntitiesResource() {
+    @Autowired
+    public EntitiesResource(EmbeddedCacheManager cacheManager) {
+        this.entitiesCache = cacheManager.getCache("entities");
     }
 
     @GET
