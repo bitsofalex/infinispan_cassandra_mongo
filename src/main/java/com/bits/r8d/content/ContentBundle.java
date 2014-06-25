@@ -29,7 +29,7 @@ public class ContentBundle<T extends Configuration> implements ConfiguredBundle<
 
 
     private void registerResources(Environment environment, AnnotationConfigWebApplicationContext context) {
-        context.register(InfinispanCacheConfig.class, ContentSpringContext.class);
+        context.register(InfinispanCacheConfig.class, ContentSpringContext.class, MetricsRegistryConfig.class);
         context.refresh();
 
         final Map<String, Object> beansWithAnnotation = context.getBeansWithAnnotation(Path.class);

@@ -21,6 +21,7 @@
         <joda-time.version>2.3</joda-time.version>
         <joda-money.version>0.9.1</joda-money.version>
         <guava.version>17.0</guava.version>
+        <metrics-elasticsearch-reporter.version>2.0</metrics-elasticsearch-reporter.version>
     </properties>
 
     <dependencies>
@@ -93,6 +94,17 @@
             <groupId>org.joda</groupId>
             <artifactId>joda-money</artifactId>
             <version>${joda-money.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.elasticsearch</groupId>
+            <artifactId>metrics-elasticsearch-reporter</artifactId>
+            <version>${metrics-elasticsearch-reporter.version}</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>com.fasterxml.jackson.core</groupId>
+                    <artifactId>jackson-databind</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <dependency>
             <groupId>com.google.guava</groupId>

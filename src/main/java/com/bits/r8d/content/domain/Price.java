@@ -10,7 +10,7 @@ import java.math.BigDecimal;
 /**
  * Created by alexl on 20/06/2014.
  */
-public class Price implements Serializable {
+public class Price extends Publishable implements Serializable {
 
     @NotNull
     private Type type;

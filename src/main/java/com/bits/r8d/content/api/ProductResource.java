@@ -1,6 +1,7 @@
 package com.bits.r8d.content.api;
 
 import com.bits.r8d.content.domain.ProductInstance;
+import com.codahale.metrics.annotation.Timed;
 import org.infinispan.Cache;
 import org.infinispan.manager.DefaultCacheManager;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,6 +33,7 @@ public class ProductResource {
 
     @GET
     @Produces("application/json")
+    @Timed
     public ProductInstance getProductInstance(@PathParam("productId") final String productId) {
         return Optional.ofNullable(productsCache.get(productId))
                 .orElseThrow(() -> new WebApplicationException(Response.Status.NOT_FOUND));

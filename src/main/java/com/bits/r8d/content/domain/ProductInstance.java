@@ -21,10 +21,6 @@ public class ProductInstance extends Publishable implements Serializable {
 
     private final Map<Price.Type, Price> prices;
 
-//    public ProductInstance(final ProductDefinition productDefinition, final Price price) {
-//        this(productDefinition.getProductId(), productDefinition.getPosName(), price, );
-//    }
-
     @JsonCreator
     public ProductInstance(@JsonProperty("productId") final String productId,
                            @JsonProperty("posName") final String posName,
